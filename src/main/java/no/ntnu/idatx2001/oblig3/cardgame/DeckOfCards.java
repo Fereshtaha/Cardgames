@@ -92,6 +92,33 @@ public class DeckOfCards {
     }
 
 
+    /**
+     * Sjekker om kortene på hånden har flush, altså om alle kortene er av samme type.
+     *
+     * @param cards kortene
+     * @return true hvis alle kortene er av samme type, false hvis ikke.
+     */
+    public boolean hasFlush(ArrayList<PlayingCard> cards) {
+        Map<Character, Long> suitCount = cards.stream().
+                collect(Collectors.groupingBy(PlayingCard::getSuit, Collectors.counting()));
 
+        for (Long number : suitCount.values()) {
+            if (number >= 5) {
+                return true;
+            }
+        }
+        return false;
+    }
 
+    /**
+     * Sjekker om kortene har en dronning av spar
+     *
+     * @param cards kortene
+     * @return true hvis dronning finnes, false hvis den ikke finnes
+     */
+    public boolean hasQueenOfSpades(ArrayList<PlayingCard> cards) {
+        return cards.stream().
+                anyMatch(playingCard -> playingCard.getSuit() == 'S' &&
+                        playingCard.getFace() == 12);
+    }
 }
