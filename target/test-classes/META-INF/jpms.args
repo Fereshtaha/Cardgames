@@ -1,0 +1,4 @@
+--patch-module
+PlayingCards=_
+--add-reads
+PlayingCards=ALL-UNNAMED
