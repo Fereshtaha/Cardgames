@@ -78,6 +78,20 @@ public class DeckOfCards {
                 reduce(0, (sum, playingcard) -> sum + playingcard.getFace(), Integer::sum);
     }
 
+    /**
+     * Filtrerer ut hjertekortene, og lager en liste over alle kort som er av hjerte.
+     * @param cardsOnHand kortene på hånda
+     * @return arraylisten
+     */
+    public ArrayList<PlayingCard> printHearts(ArrayList<PlayingCard> cardsOnHand) {
+        ArrayList<PlayingCard> cardsOfHearts = new ArrayList<>();
+        cardsOnHand.stream().
+                filter(playingCard -> playingCard.getSuit() == 'H').
+                forEach(cardsOfHearts::add);
+        return cardsOfHearts;
+    }
+
+
 
 
 }
